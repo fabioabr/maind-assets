@@ -1,0 +1,265 @@
+/* =============================================================
+   Maind Tech — Color Palette v1.1 (light + dark)
+   Variables extracted from brand reference (Robo3.png)
+
+   Usage:
+     - Default theme is LIGHT (defined on :root)
+     - For dark, set: <html data-theme="dark">
+     - Auto via OS preference also wired (prefers-color-scheme)
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   1) BRAND PRIMITIVES — never reference these directly in product
+      code; use the semantic tokens below.
+   ------------------------------------------------------------- */
+:root {
+  /* ---------- Cyan (primary) ---------- */
+  --maind-cyan-50:  #E5F8FF;
+  --maind-cyan-100: #CCF1FF;
+  --maind-cyan-200: #99E3FF;
+  --maind-cyan-300: #66D4FF;
+  --maind-cyan-400: #33C6FF;
+  --maind-cyan-500: #00C8FF;  /* base — Electric Cyan */
+  --maind-cyan-600: #1E9CFF;
+  --maind-cyan-700: #0077CC;
+  --maind-cyan-800: #005C99;
+  --maind-cyan-900: #003D66;
+
+  /* ---------- Violet (secondary) ---------- */
+  --maind-violet-50:  #F3EEFF;
+  --maind-violet-100: #E5DBFF;
+  --maind-violet-200: #CBB7FF;
+  --maind-violet-300: #B093FF;
+  --maind-violet-400: #9670EE;
+  --maind-violet-500: #8B5CF6;  /* base — Royal Violet */
+  --maind-violet-600: #6B3FA0;
+  --maind-violet-700: #553080;
+  --maind-violet-800: #3F2360;
+  --maind-violet-900: #2A1740;
+
+  /* ---------- Magenta (accent) ---------- */
+  --maind-magenta-50:  #FDF0FF;
+  --maind-magenta-100: #FBE0FF;
+  --maind-magenta-200: #F7C2FF;
+  --maind-magenta-300: #F0A0FA;
+  --maind-magenta-400: #E879F9;
+  --maind-magenta-500: #D946EF;  /* base — Neon Magenta */
+  --maind-magenta-600: #B91FCF;
+  --maind-magenta-700: #8E1AA0;
+  --maind-magenta-800: #661274;
+  --maind-magenta-900: #3F0A48;
+
+  /* ---------- Indigo (deep background) ---------- */
+  --maind-indigo-50:  #ECEAF5;
+  --maind-indigo-100: #D4D0E8;
+  --maind-indigo-200: #A9A1D1;
+  --maind-indigo-300: #7E72BA;
+  --maind-indigo-400: #5343A3;
+  --maind-indigo-500: #2A1B4E;
+  --maind-indigo-600: #1F1339;
+  --maind-indigo-700: #1A1240;  /* deep background */
+  --maind-indigo-800: #100A28;
+  --maind-indigo-900: #080517;
+
+  /* ---------- Neutral (cloud → obsidian) ---------- */
+  --maind-neutral-0:   #FFFFFF;
+  --maind-neutral-50:  #F5F6FA;
+  --maind-neutral-100: #E8EAF0;
+  --maind-neutral-200: #D1D5E0;
+  --maind-neutral-300: #9BA1B5;
+  --maind-neutral-400: #6B7185;
+  --maind-neutral-500: #4A4F60;
+  --maind-neutral-600: #2E323F;
+  --maind-neutral-700: #1A1F2E;
+  --maind-neutral-800: #0A0E1A;  /* Obsidian */
+  --maind-neutral-900: #000000;
+
+  --maind-blush-500: #FFA8C5;
+
+  /* ---------- Signature gradients (theme-agnostic) ---------- */
+  --maind-gradient-brand:   linear-gradient(135deg, #8B5CF6 0%, #00C8FF 100%);
+  --maind-gradient-neon:    linear-gradient(135deg, #D946EF 0%, #00C8FF 100%);
+  --maind-gradient-ambient-dark:  linear-gradient(135deg, #2A1740 0%, #1A1240 50%, #0A0E1A 100%);
+  --maind-gradient-ambient-light: linear-gradient(135deg, #F3EEFF 0%, #FFFFFF 50%, #E5F8FF 100%);
+  --maind-gradient-halo:    radial-gradient(circle at 30% 30%, #8B5CF6 0%, #1A1240 60%, #080517 100%);
+}
+
+/* -------------------------------------------------------------
+   2) LIGHT THEME — default on :root
+   ------------------------------------------------------------- */
+:root,
+:root[data-theme="light"] {
+  /* backgrounds */
+  --maind-bg-primary:    #FFFFFF;
+  --maind-bg-secondary:  var(--maind-neutral-50);
+  --maind-bg-elevated:   #FFFFFF;
+
+  /* surfaces */
+  --maind-surface:          #FFFFFF;
+  --maind-surface-raised:   var(--maind-neutral-50);
+  --maind-surface-inverted: var(--maind-indigo-700);
+
+  /* text */
+  --maind-text-primary:   var(--maind-indigo-800);
+  --maind-text-secondary: var(--maind-neutral-600);
+  --maind-text-muted:     var(--maind-neutral-400);
+  --maind-text-inverted:  var(--maind-neutral-50);
+  --maind-text-accent:    var(--maind-cyan-700);   /* AA on white */
+  --maind-text-on-brand:  var(--maind-indigo-800); /* text over cyan/violet/magenta */
+
+  /* borders */
+  --maind-border-subtle:  var(--maind-neutral-100);
+  --maind-border-default: var(--maind-neutral-200);
+  --maind-border-strong:  var(--maind-cyan-600);
+
+  /* actions */
+  --maind-action-primary:         var(--maind-cyan-500);
+  --maind-action-primary-hover:   var(--maind-cyan-600);
+  --maind-action-primary-text:    var(--maind-indigo-800);
+  --maind-action-secondary:       var(--maind-violet-500);
+  --maind-action-secondary-hover: var(--maind-violet-600);
+  --maind-action-secondary-text:  #FFFFFF;
+  --maind-action-accent:          var(--maind-magenta-500);
+  --maind-action-accent-hover:    var(--maind-magenta-600);
+  --maind-action-accent-text:     #FFFFFF;
+
+  /* tinted surfaces (badges, alerts) */
+  --maind-tint-cyan-bg:    rgba(0,200,255,0.10);
+  --maind-tint-cyan-fg:    var(--maind-cyan-700);
+  --maind-tint-cyan-bd:    rgba(0,200,255,0.30);
+  --maind-tint-violet-bg:  rgba(139,92,246,0.10);
+  --maind-tint-violet-fg:  var(--maind-violet-600);
+  --maind-tint-violet-bd:  rgba(139,92,246,0.25);
+  --maind-tint-magenta-bg: rgba(217,70,239,0.10);
+  --maind-tint-magenta-fg: var(--maind-magenta-600);
+  --maind-tint-magenta-bd: rgba(217,70,239,0.25);
+
+  /* glow / shadow */
+  --maind-glow-cyan:    0 6px 20px rgba(0,200,255,0.25);
+  --maind-glow-violet:  0 6px 22px rgba(139,92,246,0.25);
+  --maind-glow-magenta: 0 6px 22px rgba(217,70,239,0.25);
+  --maind-shadow-card:  0 1px 2px rgba(16,10,40,0.04), 0 4px 16px rgba(16,10,40,0.06);
+
+  /* page background composition */
+  --maind-page-bg:
+    radial-gradient(ellipse at 15% 0%, rgba(139,92,246,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 10%, rgba(0,200,255,0.07) 0%, transparent 55%),
+    var(--maind-bg-primary);
+
+  --maind-gradient-ambient: var(--maind-gradient-ambient-light);
+
+  color-scheme: light;
+}
+
+/* -------------------------------------------------------------
+   3) DARK THEME
+   ------------------------------------------------------------- */
+:root[data-theme="dark"] {
+  /* backgrounds — deeper hierarchy (900 → 800 → 700) */
+  --maind-bg-primary:    var(--maind-indigo-900);
+  --maind-bg-secondary:  var(--maind-indigo-700);
+  --maind-bg-elevated:   var(--maind-indigo-800);
+
+  /* surfaces */
+  --maind-surface:          var(--maind-indigo-800);
+  --maind-surface-raised:   var(--maind-violet-900);
+  --maind-surface-inverted: var(--maind-neutral-50);
+
+  /* text */
+  --maind-text-primary:   var(--maind-neutral-50);
+  --maind-text-secondary: var(--maind-neutral-200);
+  --maind-text-muted:     var(--maind-neutral-300);
+  --maind-text-inverted:  var(--maind-indigo-800);
+  --maind-text-accent:    var(--maind-cyan-500);
+  --maind-text-on-brand:  var(--maind-indigo-800);
+
+  /* borders — slightly deeper to match darker bg */
+  --maind-border-subtle:  var(--maind-violet-900);
+  --maind-border-default: var(--maind-violet-800);
+  --maind-border-strong:  var(--maind-cyan-500);
+
+  /* actions */
+  --maind-action-primary:         var(--maind-cyan-500);
+  --maind-action-primary-hover:   var(--maind-cyan-400);
+  --maind-action-primary-text:    var(--maind-indigo-800);
+  --maind-action-secondary:       var(--maind-violet-500);
+  --maind-action-secondary-hover: var(--maind-violet-400);
+  --maind-action-secondary-text:  #FFFFFF;
+  --maind-action-accent:          var(--maind-magenta-500);
+  --maind-action-accent-hover:    var(--maind-magenta-400);
+  --maind-action-accent-text:     #FFFFFF;
+
+  /* tinted surfaces */
+  --maind-tint-cyan-bg:    rgba(0,200,255,0.15);
+  --maind-tint-cyan-fg:    var(--maind-cyan-300);
+  --maind-tint-cyan-bd:    rgba(0,200,255,0.30);
+  --maind-tint-violet-bg:  rgba(139,92,246,0.18);
+  --maind-tint-violet-fg:  var(--maind-violet-300);
+  --maind-tint-violet-bd:  rgba(139,92,246,0.35);
+  --maind-tint-magenta-bg: rgba(217,70,239,0.15);
+  --maind-tint-magenta-fg: var(--maind-magenta-300);
+  --maind-tint-magenta-bd: rgba(217,70,239,0.30);
+
+  /* glow / shadow (more intense in deeper dark) */
+  --maind-glow-cyan:    0 0 28px rgba(0,200,255,0.60);
+  --maind-glow-violet:  0 0 36px rgba(139,92,246,0.55);
+  --maind-glow-magenta: 0 0 32px rgba(217,70,239,0.55);
+  --maind-shadow-card:  0 2px 4px rgba(0,0,0,0.40), 0 16px 48px rgba(0,0,0,0.50);
+
+  /* page background composition — deeper */
+  --maind-page-bg:
+    radial-gradient(ellipse at 15% 0%,  rgba(139,92,246,0.28) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 10%, rgba(217,70,239,0.16) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(0,200,255,0.10) 0%, transparent 60%),
+    var(--maind-bg-primary);
+
+  --maind-gradient-ambient: var(--maind-gradient-ambient-dark);
+
+  color-scheme: dark;
+}
+
+/* -------------------------------------------------------------
+   4) AUTO — follow OS preference when no explicit data-theme
+   ------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --maind-bg-primary:    #080517;
+    --maind-bg-secondary:  #1A1240;
+    --maind-bg-elevated:   #100A28;
+    --maind-surface:          #100A28;
+    --maind-surface-raised:   #2A1740;
+    --maind-surface-inverted: #F5F6FA;
+    --maind-text-primary:   #F5F6FA;
+    --maind-text-secondary: #E8EAF0;
+    --maind-text-muted:     #9BA1B5;
+    --maind-text-inverted:  #100A28;
+    --maind-text-accent:    #00C8FF;
+    --maind-text-on-brand:  #100A28;
+    --maind-border-subtle:  #2A1740;
+    --maind-border-default: #3F2360;
+    --maind-border-strong:  #00C8FF;
+    --maind-action-primary:         #00C8FF;
+    --maind-action-primary-hover:   #33C6FF;
+    --maind-action-primary-text:    #100A28;
+    --maind-action-secondary:       #8B5CF6;
+    --maind-action-secondary-hover: #9670EE;
+    --maind-action-secondary-text:  #FFFFFF;
+    --maind-action-accent:          #D946EF;
+    --maind-action-accent-hover:    #E879F9;
+    --maind-action-accent-text:     #FFFFFF;
+    --maind-tint-cyan-bg: rgba(0,200,255,0.15);    --maind-tint-cyan-fg: #66D4FF;     --maind-tint-cyan-bd: rgba(0,200,255,0.30);
+    --maind-tint-violet-bg: rgba(139,92,246,0.18); --maind-tint-violet-fg: #B093FF;   --maind-tint-violet-bd: rgba(139,92,246,0.35);
+    --maind-tint-magenta-bg: rgba(217,70,239,0.15);--maind-tint-magenta-fg: #F0A0FA;  --maind-tint-magenta-bd: rgba(217,70,239,0.30);
+    --maind-glow-cyan:    0 0 28px rgba(0,200,255,0.60);
+    --maind-glow-violet:  0 0 36px rgba(139,92,246,0.55);
+    --maind-glow-magenta: 0 0 32px rgba(217,70,239,0.55);
+    --maind-shadow-card:  0 2px 4px rgba(0,0,0,0.40), 0 16px 48px rgba(0,0,0,0.50);
+    --maind-page-bg:
+      radial-gradient(ellipse at 15% 0%,  rgba(139,92,246,0.28) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 10%, rgba(217,70,239,0.16) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 100%, rgba(0,200,255,0.10) 0%, transparent 60%),
+      var(--maind-bg-primary);
+    --maind-gradient-ambient: var(--maind-gradient-ambient-dark);
+    color-scheme: dark;
+  }
+}

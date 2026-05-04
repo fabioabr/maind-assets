@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Maind Tech — Email Templates</title>
+<link rel="stylesheet" href="../company-theme/palette.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--maind-text-primary);
+    background: var(--maind-page-bg);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  .container { max-width: 1320px; margin: 0 auto; padding: 48px 32px 96px; }
+
+  .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; gap: 16px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 18px; }
+  .brand-mark { width: 36px; height: 36px; border-radius: 10px; background: var(--maind-gradient-brand); box-shadow: var(--maind-glow-violet); display: grid; place-items: center; font-size: 18px; font-weight: 800; color: #fff; }
+  .brand b { background: var(--maind-gradient-brand); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .crumb { color: var(--maind-text-muted); font-size: 13px; }
+  .crumb a { color: var(--maind-text-accent); text-decoration: none; }
+
+  h1 { font-size: clamp(28px, 4vw, 42px); margin: 0 0 8px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 800; }
+  h1 span { background: var(--maind-gradient-neon); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .lead { color: var(--maind-text-secondary); font-size: 16px; margin: 0 0 40px; max-width: 720px; }
+
+  .tip {
+    background: var(--maind-bg-elevated);
+    border: 1px solid var(--maind-border-subtle);
+    border-left: 3px solid var(--maind-action-primary);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 0 0 48px;
+    font-size: 14px;
+    color: var(--maind-text-secondary);
+    box-shadow: var(--maind-shadow-card);
+  }
+  .tip strong { color: var(--maind-text-primary); }
+  .tip code { font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; font-size: 12px; color: var(--maind-text-accent); background: var(--maind-tint-cyan-bg); padding: 2px 6px; border-radius: 4px; }
+  .tip ol { margin: 8px 0 0; padding-left: 22px; }
+  .tip li { margin-bottom: 4px; }
+
+  h2 { font-size: 22px; margin: 48px 0 4px; font-weight: 700; letter-spacing: -0.01em; }
+  .h-sub { color: var(--maind-text-muted); font-size: 13px; margin: 0 0 20px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+  .card {
+    background: var(--maind-bg-elevated);
+    border: 1px solid var(--maind-border-subtle);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--maind-shadow-card);
+  }
+  .card-head { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 1px solid var(--maind-border-subtle); }
+  .card-head .name { font-weight: 700; font-size: 14px; }
+  .card-head .mood { font-size: 11px; padding: 3px 9px; border-radius: 999px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .mood-light { background: rgba(255,200,80,0.12); color: #d4a017; border: 1px solid rgba(255,200,80,0.30); }
+  .mood-dark  { background: var(--maind-tint-violet-bg); color: var(--maind-tint-violet-fg); border: 1px solid var(--maind-tint-violet-bd); }
+
+  .preview-frame { width: 100%; height: 460px; border: none; display: block; background: var(--maind-bg-secondary); }
+  .preview-frame.large { height: 720px; }
+  .preview-frame.signature { height: 240px; background: #FAFAFB; }
+
+  .card-actions { padding: 12px 18px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; border-top: 1px solid var(--maind-border-subtle); background: var(--maind-bg-secondary); }
+  .btn-mini { font: inherit; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 7px; border: 1px solid var(--maind-border-default); background: transparent; color: var(--maind-text-primary); cursor: pointer; text-decoration: none; transition: border-color .15s ease, color .15s ease; }
+  .btn-mini:hover { border-color: var(--maind-border-strong); color: var(--maind-text-accent); }
+  .btn-mini.primary { background: var(--maind-action-primary); color: var(--maind-action-primary-text); border-color: transparent; box-shadow: var(--maind-glow-cyan); }
+  .btn-mini.primary:hover { background: var(--maind-action-primary-hover); color: var(--maind-action-primary-text); }
+  .filename { margin-left: auto; font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; font-size: 11px; color: var(--maind-text-muted); }
+
+  /* Theme toggle */
+  .theme-toggle { display: inline-flex; align-items: center; gap: 8px; background: var(--maind-bg-elevated); border: 1px solid var(--maind-border-default); color: var(--maind-text-primary); border-radius: 999px; padding: 6px 14px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .theme-toggle:hover { border-color: var(--maind-border-strong); }
+
+  /* Toast */
+  .toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--maind-text-primary); color: var(--maind-bg-primary); padding: 12px 20px; border-radius: 999px; font-size: 13px; font-weight: 600; box-shadow: 0 12px 40px rgba(0,0,0,0.4), var(--maind-glow-cyan); transition: transform .25s cubic-bezier(.2,.8,.2,1), opacity .25s ease; opacity: 0; pointer-events: none; z-index: 100; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+<script>
+  (function () {
+    var saved = localStorage.getItem('maind-theme');
+    if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved);
+  })();
+</script>
+</head>
+<body>
+<div class="container">
+
+  <header class="header">
+    <div class="brand">
+      <div class="brand-mark">m</div>
+      <span><b>mAInd</b> · Email Templates</span>
+    </div>
+    <div style="display:flex; gap:14px; align-items:center;">
+      <span class="crumb"><a href="../company-theme/palette.html">← Voltar para a paleta</a></span>
+      <button class="theme-toggle" id="theme-toggle">Alternar tema</button>
+    </div>
+  </header>
+
+  <h1>Templates de e-mail <span>Maind Tech</span></h1>
+  <p class="lead">Templates HTML otimizados para Gmail (table-based, estilos inline, fallbacks de cor sólida). Pré-visualize, abra standalone, ou copie o HTML pra usar.</p>
+
+  <div class="tip">
+    <strong>Como usar no Gmail</strong>
+    <ol>
+      <li><b>Assinatura:</b> abra <code>pub/sign.html</code> no navegador → selecione tudo (Ctrl+A) → copie (Ctrl+C) → cole em <i>Gmail → Configurações → Geral → Assinatura</i>. As imagens (pg-left/mid/right.png + cert/) precisam estar hospedadas em URL pública.</li>
+      <li><b>Wrapper / Newsletter:</b> abra o arquivo no navegador → selecione tudo → copie → cole no corpo de um novo e-mail (Compose). O Gmail preserva o formato visual.</li>
+      <li><b>Para envio em massa</b> (newsletter), use ferramenta tipo <i>YAMM</i>, <i>Mailchimp</i> ou <i>SendGrid</i> e faça upload do HTML bruto. Visualize via <code>view-source:</code> no navegador (Ctrl+U) pra copiar o código.</li>
+      <li><b>Outlook desktop</b> não renderiza gradientes CSS, <code>background-clip:text</code>, nem múltiplos backgrounds — vai cair em <code>bgcolor</code> sólido / <code>color</code> sólido (já incluso como fallback).</li>
+      <li><b>Dark mode automático</b> do Gmail mobile pode inverter cores dos templates light. Se for problema, prefira o template dark.</li>
+    </ol>
+  </div>
+
+  <h2>Assinatura</h2>
+  <p class="h-sub">Banner horizontal full-width (min 1000px) com 3 PNGs (left fixo, mid repete, right fixo), dados em layout label-acima-valor + linha de badges de certificação.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="card-head">
+        <span class="name">Signature · Canônica</span>
+        <span class="mood mood-light">☀ light</span>
+      </div>
+      <iframe class="preview-frame signature" src="pub/sign.html" loading="lazy"></iframe>
+      <div class="card-actions">
+        <a class="btn-mini primary" href="pub/sign.html" target="_blank">Abrir standalone</a>
+        <a class="btn-mini" href="view-source:pub/sign.html" target="_blank" onclick="return openSource(event,'pub/sign.html')">Ver HTML</a>
+        <span class="filename">pub/sign.html</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Wrapper · e-mail do dia a dia</h2>
+  <p class="h-sub">Header com a marca + área de corpo livre + footer. Ideal pra propostas e comunicações comerciais.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="card-head">
+        <span class="name">Wrapper · Light</span>
+        <span class="mood mood-light">☀ light</span>
+      </div>
+      <iframe class="preview-frame" src="wrapper-light.html" loading="lazy"></iframe>
+      <div class="card-actions">
+        <a class="btn-mini primary" href="wrapper-light.html" target="_blank">Abrir standalone</a>
+        <a class="btn-mini" href="view-source:wrapper-light.html" target="_blank" onclick="return openSource(event,'wrapper-light.html')">Ver HTML</a>
+        <span class="filename">wrapper-light.html</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <span class="name">Wrapper · Dark</span>
+        <span class="mood mood-dark">☾ dark</span>
+      </div>
+      <iframe class="preview-frame" src="wrapper-dark.html" loading="lazy"></iframe>
+      <div class="card-actions">
+        <a class="btn-mini primary" href="wrapper-dark.html" target="_blank">Abrir standalone</a>
+        <a class="btn-mini" href="view-source:wrapper-dark.html" target="_blank" onclick="return openSource(event,'wrapper-dark.html')">Ver HTML</a>
+        <span class="filename">wrapper-dark.html</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Newsletter</h2>
+  <p class="h-sub">Template completo: hero com gradiente, 3 cards de artigos, CTA destacado, footer com unsubscribe.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="card-head">
+        <span class="name">Newsletter · Light</span>
+        <span class="mood mood-light">☀ light</span>
+      </div>
+      <iframe class="preview-frame large" src="newsletter-light.html" loading="lazy"></iframe>
+      <div class="card-actions">
+        <a class="btn-mini primary" href="newsletter-light.html" target="_blank">Abrir standalone</a>
+        <a class="btn-mini" href="view-source:newsletter-light.html" target="_blank" onclick="return openSource(event,'newsletter-light.html')">Ver HTML</a>
+        <span class="filename">newsletter-light.html</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <span class="name">Newsletter · Dark</span>
+        <span class="mood mood-dark">☾ dark</span>
+      </div>
+      <iframe class="preview-frame large" src="newsletter-dark.html" loading="lazy"></iframe>
+      <div class="card-actions">
+        <a class="btn-mini primary" href="newsletter-dark.html" target="_blank">Abrir standalone</a>
+        <a class="btn-mini" href="view-source:newsletter-dark.html" target="_blank" onclick="return openSource(event,'newsletter-dark.html')">Ver HTML</a>
+        <span class="filename">newsletter-dark.html</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">Copiado!</div>
+
+<script>
+  function openSource(ev, file) {
+    // Try opening view-source: scheme — works in Chrome/Edge/Firefox
+    // but only when triggered from address bar manually. Fallback: open file and instruct.
+    ev.preventDefault();
+    const url = window.location.href.replace(/[^/]*$/, '') + file;
+    window.open('view-source:' + url, '_blank');
+    showToast('Use Ctrl+U se a aba abrir só o arquivo');
+    return false;
+  }
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastT);
+    window._toastT = setTimeout(() => t.classList.remove('show'), 2000);
+  }
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('maind-theme', next);
+  });
+</script>
+
+</body>
+</html>
